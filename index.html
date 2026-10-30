@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="QualityTest: aplicación demostrativa para pruebas funcionales y no funcionales de software.">
+<title>QualityTest | Gestión de calidad</title>
+<style>
+:root{--navy:#17365d;--blue:#2563eb;--cyan:#0ea5e9;--bg:#f3f6fb;--ink:#182230;--muted:#64748b;--line:#e2e8f0;--white:#fff;--green:#15803d;--red:#b91c1c;--amber:#b45309;--shadow:0 8px 24px rgba(15,23,42,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#102a4c,#2563eb)}
+.login-card{width:min(430px,100%);background:white;border-radius:20px;padding:34px;box-shadow:0 20px 55px #071b3880}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;color:var(--navy)}.brand-mark{width:44px;height:44px;border-radius:13px;background:var(--navy);color:white;display:grid;place-items:center;font-size:23px}.muted{color:var(--muted)}.login-card h1{font-size:25px;margin:28px 0 7px}.field{display:flex;flex-direction:column;gap:6px;margin:14px 0}.field label{font-size:13px;font-weight:700;color:#334155}.field input,.field select,.field textarea,.toolbar input,.toolbar select{border:1px solid #cbd5e1;border-radius:9px;padding:11px 12px;background:white;outline:none;width:100%}.field input:focus,.field select:focus,.toolbar input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb20}.btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;transition:.15s}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#1d4ed8}.btn-light{background:#eaf0f8;color:var(--navy)}.btn-danger{background:#fee2e2;color:#991b1b}.btn-success{background:#dcfce7;color:#166534}.btn-block{width:100%;margin-top:8px}.demo{background:#eff6ff;border:1px solid #bfdbfe;padding:12px;border-radius:10px;margin-top:18px;font-size:13px;line-height:1.6}.error{color:var(--red);font-size:13px;min-height:18px}.app{min-height:100vh}.topbar{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.topbar .brand{font-size:19px}.user-area{display:flex;align-items:center;gap:13px;font-size:13px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#dbeafe;color:#1e40af;font-weight:800}.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px)}.sidebar{background:#102a4c;color:#dbeafe;padding:22px 14px}.side-label{font-size:10px;letter-spacing:1.5px;color:#91a8c6;padding:8px 12px}.nav-btn{display:flex;gap:11px;align-items:center;width:100%;border:0;background:transparent;color:#dbeafe;text-align:left;padding:12px;border-radius:9px;margin:3px 0;font-weight:600}.nav-btn:hover,.nav-btn.active{background:#ffffff1c;color:white}.main{padding:28px;max-width:1500px;width:100%;margin:auto}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:22px}.page-head h1{font-size:25px;margin:0 0 6px}.page-head p{margin:0;color:var(--muted);font-size:14px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}.stat small{color:var(--muted);font-weight:600}.stat strong{display:block;font-size:27px;margin:10px 0 4px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}.panel{margin-bottom:18px}.panel h2{font-size:17px;margin:0 0 15px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.toolbar input{max-width:330px}.toolbar select{max-width:180px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #edf1f6;font-size:13px}th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:#f8fafc}tr:last-child td{border-bottom:0}.pill{display:inline-block;border-radius:30px;padding:4px 9px;font-size:11px;font-weight:700}.pill-ok{background:#dcfce7;color:#166534}.pill-low{background:#fef3c7;color:#92400e}.pill-off{background:#fee2e2;color:#991b1b}.actions{display:flex;gap:6px}.actions button{padding:6px 9px;font-size:11px}.empty{text-align:center;padding:28px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.form-grid .full{grid-column:1/-1}.modal-backdrop{position:fixed;inset:0;background:#0f172a80;display:grid;place-items:center;padding:18px;z-index:10}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:white;border-radius:16px;padding:24px;box-shadow:0 20px 60px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h2{margin:0;font-size:20px}.close{border:0;background:#f1f5f9;border-radius:8px;padding:7px 11px}.toast{position:fixed;right:22px;bottom:22px;padding:13px 18px;border-radius:10px;background:#16365d;color:white;box-shadow:var(--shadow);z-index:20;font-size:14px}.toast.bad{background:#991b1b}.helper{font-size:12px;color:var(--muted);margin-top:6px}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.quick{padding:15px;border:1px solid var(--line);border-radius:11px;background:#fbfdff}.quick strong{display:block;margin-bottom:5px}.progress{height:9px;background:#e2e8f0;border-radius:9px;overflow:hidden}.progress div{height:100%;background:var(--blue);width:0}.footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.sidebar{display:flex;overflow:auto;padding:8px}.side-label{display:none}.nav-btn{white-space:nowrap;width:auto}.main{padding:18px}}
+@media(max-width:560px){.topbar{padding:0 14px}.user-area #userName{display:none}.main{padding:14px}.cards{grid-template-columns:1fr 1fr;gap:9px}.stat{padding:13px}.stat strong{font-size:22px}.page-head{flex-direction:column}.form-grid,.quick-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.login-card{padding:25px}}
+</style>
+</head>
+<body>
+<section id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="brand"><div class="brand-mark">✓</div><span>QualityTest</span></div>
+    <h1>Bienvenido</h1><p class="muted">Ingresa para administrar la información de prueba.</p>
+    <form id="loginForm" data-testid="login-form">
+      <div class="field"><label for="loginEmail">Correo electrónico</label><input id="loginEmail" type="email" placeholder="usuario@ejemplo.com" required autocomplete="username" data-testid="login-email"></div>
+      <div class="field"><label for="loginPassword">Contraseña</label><input id="loginPassword" type="password" placeholder="Ingresa tu contraseña" required autocomplete="current-password" data-testid="login-password"></div>
+      <div id="loginError" class="error" role="alert" data-testid="login-error"></div>
+      <button class="btn btn-primary btn-block" type="submit" id="loginButton" data-testid="login-submit">Iniciar sesión</button>
+    </form>
+    <div class="demo"><strong>Credenciales de demostración</strong><br>Correo: admin@qualitytest.com<br>Contraseña: Admin123</div>
+    <p class="helper">Aplicación académica de demostración. No ingreses contraseñas reales.</p>
+  </div>
+</section>
+
+<section id="appView" class="app hidden">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">✓</div><span>QualityTest</span></div>
+  <div class="user-area"><div class="avatar">AD</div><span id="userName">Administrador</span><button class="btn btn-light" id="logoutButton" data-testid="logout-button">Cerrar sesión</button></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-label">MENÚ PRINCIPAL</div>
+    <button class="nav-btn active" data-page="dashboard" data-testid="nav-dashboard">▦ Resumen</button>
+    <button class="nav-btn" data-page="users" data-testid="nav-users">♙ Usuarios</button>
+    <button class="nav-btn" data-page="products" data-testid="nav-products">▣ Productos</button>
+    <button class="nav-btn" data-page="reports" data-testid="nav-reports">▤ Reportes</button>
+  </aside>
+  <main class="main">
+    <section id="dashboardPage" class="page">
+      <div class="page-head"><div><h1>Panel de control</h1><p>Resumen general del sistema de gestión.</p></div><button class="btn btn-light" id="resetDemoButton" data-testid="reset-demo">Restablecer datos demo</button></div>
+      <div class="cards">
+        <div class="stat"><small>Usuarios registrados</small><strong id="statUsers">0</strong><span>Registros en el sistema</span></div>
+        <div class="stat"><small>Productos registrados</small><strong id="statProducts">0</strong><span>Referencias creadas</span></div>
+        <div class="stat"><small>Unidades disponibles</small><strong id="statStock">0</strong><span>Existencias totales</span></div>
+        <div class="stat"><small>Productos con bajo stock</small><strong id="statLow">0</strong><span>Existencias menores a 5</span></div>
+      </div>
+      <div class="panel"><h2>Actividad del sistema</h2><div class="quick-grid">
+        <div class="quick"><strong>Gestión de usuarios</strong><span class="muted">Registra, consulta, edita y elimina usuarios.</span></div>
+        <div class="quick"><strong>Control de productos</strong><span class="muted">Administra referencias, precios y existencias.</span></div>
+        <div class="quick"><strong>Validación de datos</strong><span class="muted">Prueba campos obligatorios y reglas de negocio.</span></div>
+      </div></div>
+      <div class="panel"><h2>Inventario reciente</h2><div id="recentProducts" class="table-wrap"></div></div>
+    </section>
+
+    <section id="usersPage" class="page hidden">
+      <div class="page-head"><div><h1>Gestión de usuarios</h1><p>Administra los usuarios registrados en la plataforma.</p></div><button class="btn btn-primary" id="addUserButton" data-testid="add-user">+ Nuevo usuario</button></div>
+      <div class="panel"><div class="toolbar"><input id="userSearch" type="search" placeholder="Buscar por nombre o correo..." data-testid="user-search"><select id="userRoleFilter" data-testid="user-role-filter"><option value="">Todos los roles</option><option>Administrador</option><option>Operador</option><option>Consulta</option></select></div>
+        <div id="usersTable" class="table-wrap"></div></div>
+    </section>
+
+    <section id="productsPage" class="page hidden">
+      <div class="page-head"><div><h1>Gestión de productos</h1><p>Registra y controla los productos del inventario.</p></div><button class="btn btn-primary" id="addProductButton" data-testid="add-product">+ Nuevo producto</button></div>
+      <div class="panel"><div class="toolbar"><input id="productSearch" type="search" placeholder="Buscar por nombre o código..." data-testid="product-search"><select id="stockFilter" data-testid="stock-filter"><option value="">Todos los estados</option><option value="available">Disponible</option><option value="low">Stock bajo</option><option value="out">Agotado</option></select></div>
+        <div id="productsTable" class="table-wrap"></div></div>
+    </section>
+
+    <section id="reportsPage" class="page hidden">
+      <div class="page-head"><div><h1>Reportes y calidad</h1><p>Indicadores básicos para apoyar la evaluación del sistema.</p></div></div>
+      <div class="panel"><h2>Estado del inventario</h2><div style="display:flex;justify-content:space-between;margin:12px 0"><span class="muted">Unidades disponibles</span><strong id="reportStock">0</strong></div><div class="progress"><div id="stockProgress"></div></div><p class="helper">La barra representa la proporción de unidades disponibles respecto a un objetivo demostrativo de 100 unidades.</p></div>
+      <div class="panel"><h2>Escenarios sugeridos para pruebas</h2><div class="quick-grid">
+        <div class="quick"><strong>Autenticación</strong><span class="muted">Credenciales correctas, incorrectas y campos vacíos.</span></div>
+        <div class="quick"><strong>Integridad</strong><span class="muted">Correo duplicado, precio negativo y stock no numérico.</span></div>
+        <div class="quick"><strong>Usabilidad</strong><span class="muted">Navegación, mensajes y adaptación a pantalla.</span></div>
+      </div></div>
+      <div class="panel"><h2>Exportar información</h2><p class="muted">Descarga los registros actuales de usuarios o productos en formato CSV.</p><div class="toolbar"><button class="btn btn-light" id="exportUsers">Exportar usuarios CSV</button><button class="btn btn-light" id="exportProducts">Exportar productos CSV</button></div></div>
+    </section>
+    <div class="footer">QualityTest · Aplicación demostrativa para pruebas académicas · Los datos se guardan en este navegador.</div>
+  </main>
+</div>
+</section>
+
+<div id="modalBackdrop" class="modal-backdrop hidden">
+ <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-head"><h2 id="modalTitle">Formulario</h2><button class="close" id="closeModal" aria-label="Cerrar">✕</button></div>
+  <form id="dataForm">
+   <div id="modalFields" class="form-grid"></div>
+   <div id="formError" class="error" role="alert"></div>
+   <div class="toolbar" style="justify-content:flex-end;margin:12px 0 0"><button type="button" class="btn btn-light" id="cancelModal">Cancelar</button><button type="submit" class="btn btn-primary" id="saveRecordButton" data-testid="save-record">Guardar registro</button></div>
+  </form>
+ </div>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script>
+(() => {
+'use strict';
+const KEYS={users:'qualitytest_users_v1',products:'qualitytest_products_v1',session:'qualitytest_session_v1'};
+const $=id=>document.getElementById(id);
+const read=(key,fallback=[])=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
+const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+const uid=()=> 'QT-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function seed(){
+ if(!localStorage.getItem(KEYS.users))write(KEYS.users,[
+  {id:'U-001',name:'Ana Martínez',email:'ana@qualitytest.com',role:'Administrador',status:'Activo'},
+  {id:'U-002',name:'Carlos Pérez',email:'carlos@qualitytest.com',role:'Operador',status:'Activo'},
+  {id:'U-003',name:'Laura Gómez',email:'laura@qualitytest.com',role:'Consulta',status:'Inactivo'}]);
+ if(!localStorage.getItem(KEYS.products))write(KEYS.products,[
+  {id:'P-001',code:'TEC-001',name:'Teclado inalámbrico',category:'Tecnología',price:85000,stock:12},
+  {id:'P-002',code:'TEC-002',name:'Mouse óptico',category:'Tecnología',price:42000,stock:3},
+  {id:'P-003',code:'OFI-001',name:'Cuaderno universitario',category:'Papelería',price:12000,stock:0}]);
+}
+let currentType='',editingId=null;
+const users=()=>read(KEYS.users),products=()=>read(KEYS.products);
+function toast(message,bad=false){$('toast').textContent=message;$('toast').classList.toggle('bad',bad);$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2800)}
+function showApp(){ $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('userName').textContent=read(KEYS.session,{name:'Administrador'}).name||'Administrador';renderAll(); }
+function showLogin(){ $('appView').classList.add('hidden');$('loginView').classList.remove('hidden');$('loginPassword').value=''; }
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();const email=$('loginEmail').value.trim().toLowerCase(),password=$('loginPassword').value;
+ if(email==='admin@qualitytest.com'&&password==='Admin123'){write(KEYS.session,{name:'Administrador',email});$('loginError').textContent='';showApp();toast('Inicio de sesión exitoso');}
+ else {$('loginError').textContent='Correo o contraseña incorrectos. Verifica tus datos.';$('loginPassword').setAttribute('aria-invalid','true');}
+});
+$('logoutButton').addEventListener('click',()=>{localStorage.removeItem(KEYS.session);showLogin();});
+function navigate(page){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$(page+'Page').classList.remove('hidden');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));if(page==='users')renderUsers();if(page==='products')renderProducts();if(page==='dashboard'||page==='reports')renderDashboard();}
+document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function renderDashboard(){
+ const us=users(),ps=products(),stock=ps.reduce((s,p)=>s+Number(p.stock),0),low=ps.filter(p=>Number(p.stock)>0&&Number(p.stock)<5).length;
+ $('statUsers').textContent=us.length;$('statProducts').textContent=ps.length;$('statStock').textContent=stock;$('statLow').textContent=low;$('reportStock').textContent=stock;$('stockProgress').style.width=Math.min(stock,100)+'%';
+ $('recentProducts').innerHTML=ps.length?`<table><thead><tr><th>Código</th><th>Producto</th><th>Precio</th><th>Stock</th></tr></thead><tbody>${ps.slice(0,5).map(p=>`<tr><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${money(p.price)}</td><td>${p.stock}</td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay productos registrados.</div>';
+}
+function money(n){return new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(Number(n)||0)}
+function renderUsers(){
+ const q=$('userSearch').value.toLowerCase(),role=$('userRoleFilter').value;
+ const list=users().filter(u=>(u.name+' '+u.email).toLowerCase().includes(q)&&(!role||u.role===role));
+ $('usersTable').innerHTML=list.length?`<table><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>${list.map(u=>`<tr><td>${escapeHTML(u.name)}</td><td>${escapeHTML(u.email)}</td><td>${escapeHTML(u.role)}</td><td><span class="pill ${u.status==='Activo'?'pill-ok':'pill-off'}">${u.status}</span></td><td><div class="actions"><button class="btn btn-light" data-edit-user="${u.id}">Editar</button><button class="btn btn-danger" data-delete-user="${u.id}">Eliminar</button></div></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No se encontraron usuarios.</div>';
+}
+function renderProducts(){
+ const q=$('productSearch').value.toLowerCase(),filter=$('stockFilter').value;
+ const list=products().filter(p=> (p.name+' '+p.code+' '+p.category).toLowerCase().includes(q)).filter(p=>!filter||(filter==='available'&&p.stock>=5)||(filter==='low'&&p.stock>0&&p.stock<5)||(filter==='out'&&p.stock===0));
+ $('productsTable').innerHTML=list.length?`<table><thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>${list.map(p=>{let state=p.stock===0?'Agotado':p.stock<5?'Stock bajo':'Disponible',cls=p.stock===0?'pill-off':p.stock<5?'pill-low':'pill-ok';return `<tr><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>${money(p.price)}</td><td>${p.stock}</td><td><span class="pill ${cls}">${state}</span></td><td><div class="actions"><button class="btn btn-light" data-edit-product="${p.id}">Editar</button><button class="btn btn-danger" data-delete-product="${p.id}">Eliminar</button></div></td></tr>`}).join('')}</tbody></table>`:'<div class="empty">No se encontraron productos.</div>';
+}
+function renderAll(){renderDashboard();renderUsers();renderProducts();}
+$('userSearch').addEventListener('input',renderUsers);$('userRoleFilter').addEventListener('change',renderUsers);$('productSearch').addEventListener('input',renderProducts);$('stockFilter').addEventListener('change',renderProducts);
+function openModal(type,id=null){
+ currentType=type;editingId=id;const record=id?(type==='user'?users():products()).find(x=>x.id===id):{};
+ $('modalTitle').textContent=(id?'Editar ':'Nuevo ')+(type==='user'?'usuario':'producto');$('formError').textContent='';
+ const fields=type==='user'?[
+  ['name','Nombre completo','text',record.name||'','Ingrese el nombre completo'],
+  ['email','Correo electrónico','email',record.email||'','usuario@correo.com'],
+  ['role','Rol','select',record.role||'Operador',['Administrador','Operador','Consulta']],
+  ['status','Estado','select',record.status||'Activo',['Activo','Inactivo']]
+ ]:[
+  ['code','Código','text',record.code||'','Ej. TEC-003'],
+  ['name','Nombre del producto','text',record.name||'','Ingrese el nombre'],
+  ['category','Categoría','select',record.category||'Tecnología',['Tecnología','Papelería','Hogar','Otros']],
+  ['price','Precio (COP)','number',record.price??'','Debe ser mayor que cero'],
+  ['stock','Cantidad disponible','number',record.stock??'','Debe ser un número entero igual o mayor que cero']
+ ];
+ $('modalFields').innerHTML=fields.map(([name,label,type,value,extra])=>`<div class="field ${name==='name'?'full':''}"><label for="field_${name}">${label}</label>${type==='select'?`<select id="field_${name}" name="${name}" required>${extra.map(v=>`<option ${v===value?'selected':''}>${v}</option>`).join('')}</select>`:`<input id="field_${name}" name="${name}" type="${type}" value="${escapeHTML(value)}" placeholder="${extra}" ${type==='number'?'min="0" step="1"':''} required>`}</div>`).join('');
+ $('modalBackdrop').classList.remove('hidden');setTimeout(()=>$('modalFields').querySelector('input,select')?.focus(),30);
+}
+function closeModal(){$('modalBackdrop').classList.add('hidden');$('dataForm').reset();editingId=null}
+$('addUserButton').addEventListener('click',()=>openModal('user'));$('addProductButton').addEventListener('click',()=>openModal('product'));$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);
+$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});
+$('dataForm').addEventListener('submit',e=>{
+ e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget).entries());const isUser=currentType==='user';let list=isUser?users():products();
+ if(isUser){
+  data.name=data.name.trim();data.email=data.email.trim().toLowerCase();
+  if(data.name.length<3){$('formError').textContent='El nombre debe tener al menos 3 caracteres.';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){$('formError').textContent='Ingresa un correo electrónico válido.';return}
+  if(list.some(x=>x.email===data.email&&x.id!==editingId)){$('formError').textContent='Ya existe un usuario con ese correo electrónico.';return}
+ }else{
+  data.code=data.code.trim().toUpperCase();data.name=data.name.trim();data.price=Number(data.price);data.stock=Number(data.stock);
+  if(!data.code||!data.name){$('formError').textContent='El código y el nombre son obligatorios.';return}
+  if(!Number.isFinite(data.price)||data.price<=0){$('formError').textContent='El precio debe ser mayor que cero.';return}
+  if(!Number.isInteger(data.stock)||data.stock<0){$('formError').textContent='El stock debe ser un entero igual o mayor que cero.';return}
+  if(list.some(x=>x.code===data.code&&x.id!==editingId)){$('formError').textContent='Ya existe un producto con ese código.';return}
+ }
+ if(editingId){list=list.map(x=>x.id===editingId?{...x,...data}:x)}else{data.id=uid();list.push(data)}
+ write(isUser?KEYS.users:KEYS.products,list);closeModal();renderAll();toast(isUser?'Usuario guardado correctamente':'Producto guardado correctamente');
+});
+$('usersTable').addEventListener('click',e=>{
+ const edit=e.target.closest('[data-edit-user]'),del=e.target.closest('[data-delete-user]');
+ if(edit)openModal('user',edit.dataset.editUser);
+ if(del){const id=del.dataset.deleteUser;if(confirm('¿Seguro que deseas eliminar este usuario?')){write(KEYS.users,users().filter(x=>x.id!==id));renderAll();toast('Usuario eliminado')}}
+});
+$('productsTable').addEventListener('click',e=>{
+ const edit=e.target.closest('[data-edit-product]'),del=e.target.closest('[data-delete-product]');
+ if(edit)openModal('product',edit.dataset.editProduct);
+ if(del){const id=del.dataset.deleteProduct;if(confirm('¿Seguro que deseas eliminar este producto?')){write(KEYS.products,products().filter(x=>x.id!==id));renderAll();toast('Producto eliminado')}}
+});
+function csvDownload(filename,rows){if(!rows.length){toast('No hay datos para exportar',true);return}const keys=Object.keys(rows[0]),csv=[keys.join(';'),...rows.map(r=>keys.map(k=>'"'+String(r[k]??'').replace(/"/g,'""')+'"').join(';'))].join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);toast('Archivo CSV generado')}
+$('exportUsers').addEventListener('click',()=>csvDownload('usuarios-qualitytest.csv',users()));$('exportProducts').addEventListener('click',()=>csvDownload('productos-qualitytest.csv',products()));
+$('resetDemoButton').addEventListener('click',()=>{if(confirm('Se reemplazarán los registros actuales por los datos de demostración. ¿Continuar?')){localStorage.removeItem(KEYS.users);localStorage.removeItem(KEYS.products);seed();renderAll();toast('Datos de demostración restablecidos')}});
+seed();if(read(KEYS.session,null))showApp();
+})();
+</script>
+</body>
+</html>
